@@ -8,6 +8,7 @@ module Players
         other_token = "X"
       end
 
+<<<<<<< HEAD
       #if we have an win available take it
       Game::WIN_COMBINATIONS.each do |w|
 
@@ -34,10 +35,24 @@ module Players
         end
         if board.cells[w[0]] == other_token && board.cells[w[1]] == other_token && board.cells[w[2]] == " "
           return (w[2]+1).to_s
+=======
+      #see if other player is 1 move from win and block
+      Game.WIN_COMBINATIONS.each do |w|
+
+        if board.cells[w[0]] == other_token && board.cells[w[1]] == other_token
+          return (w[3]+1).to_s
+        end
+        if board.cells[c[0]] == other_token && board.cells[w[1]] == other_token
+          return (w[3]+1).to_s
+        end
+        if board.cells[w[0]] == other_token && board.cells[w[1]] == other_token
+          return (w[3]+1).to_s
+>>>>>>> a9bd621af33cccc28d176cb834a42619a5efb8ce
         end
 
       end
 
+<<<<<<< HEAD
       #play next to another of own positions on open line of 3
       #if we have an win available take it
       Game::WIN_COMBINATIONS.each do |w|
@@ -70,6 +85,19 @@ module Players
         end
       end
       return (open_cells[rand(0..open_cells.length-1)]+1).to_s
+=======
+
+      #play next to another of own positions on open line of 3
+
+      #play in open location on line of 3, scored by # of open lines
+
+      #otherwise play in random location
+      board.cells.each_with_index do |c,i|
+        if c == " "
+          return (i+1).to_s
+        end
+      end
+>>>>>>> a9bd621af33cccc28d176cb834a42619a5efb8ce
 
     end
   end
